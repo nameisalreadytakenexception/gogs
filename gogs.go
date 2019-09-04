@@ -12,8 +12,8 @@ import (
 
 	"github.com/urfave/cli"
 
-	"github.com/gogs/gogs/cmd"
-	"github.com/gogs/gogs/pkg/setting"
+	"github.com/nameisalreadytakenexception/gogs/cmd"
+	"github.com/nameisalreadytakenexception/gogs/pkg/setting"
 )
 
 const Version = "0.11.91.0811"
