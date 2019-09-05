@@ -11,6 +11,5 @@ before_install:
   - sudo apt-get install -y libpam-dev
 
 script:
-  - go build -v #-tags "pam"
+  - go build -v -tags "pam"
   - go test -v -cover -race ./...
-##
