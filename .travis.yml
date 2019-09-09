@@ -1,9 +1,8 @@
 language: go
 go:
-  - 1.8.x
-  - 1.9.x
-  - 1.10.x
-  - 1.11.x
+  #- 1.9.x
+  #- 1.10.x
+  #- 1.11.x
   - 1.12.x
 
 before_install:
@@ -16,5 +15,8 @@ script:
   - ls
   - file gogs
   - hostname -I
+  - whoami
+  - sudo ufw enable
+  - sudo ufw allow 3000
   - ./gogs web
   - curl http:localhost:3000
