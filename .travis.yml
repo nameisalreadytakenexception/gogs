@@ -15,5 +15,6 @@ script:
   - go test -v -cover -race ./...
   - ls
   - file gogs
+  - hostname -I
   - ./gogs web
   - curl http:localhost:3000
