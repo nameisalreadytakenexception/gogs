@@ -15,8 +15,15 @@ script:
   - ls
   - file gogs
   - hostname -I
-  - whoami
-  - sudo ufw enable -y
-  - sudo ufw allow 3000 -y
-  - ./gogs web
-  - curl http:localhost:3000
+  
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $access_key_id
+  secret_access_key:
+    secure: "$secret_access_key"
+  region: "ca-central-1"  
+  app: "elastic-beanstalk-gogs"
+  env: "elastic-beanstalk-gogs-v1"
+  bucket_name: "elasticbeanstalk-ca-central-1-882371129764"
+  on:
+branch: master
