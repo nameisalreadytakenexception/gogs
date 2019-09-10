@@ -28,7 +28,7 @@ script:
 deploy:
   edge: true
   skip_cleanup: true
-  file: gogs.zip
+  file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs.zip
   provider: elasticbeanstalk
   access_key_id: $access_key_id
   secret_access_key:
