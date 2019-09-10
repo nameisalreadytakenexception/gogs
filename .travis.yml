@@ -23,19 +23,21 @@ script:
   - file gogs
   - zip -r gogs.zip gogs
   - ls
+  - file gogs.zip
   
-# deploy:
-#   edge: true
-#   skip_cleanup: true
-#   provider: elasticbeanstalk
-#   access_key_id: $access_key_id
-#   secret_access_key:
-#     secure: "$secret_access_key"
-#   region: "eu-central-1"  
-#   app: "elastic-beanstalk-gogs"
-#   env: "elastic-beanstalk-gogs-v1"
-#   bucket_name: "elasticbeanstalk-gogs"
-#   on:
-# branch: master
+deploy:
+  edge: true
+  skip_cleanup: true
+  file: gogs.zip
+  provider: elasticbeanstalk
+  access_key_id: $access_key_id
+  secret_access_key:
+    secure: "$secret_access_key"
+  region: "eu-central-1"  
+  app: "elastic-beanstalk-gogs"
+  env: "elastic-beanstalk-gogs-v1"
+  bucket_name: "elasticbeanstalk-gogs"
+  on:
+branch: master
 
 #lets go
