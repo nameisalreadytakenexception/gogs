@@ -21,9 +21,9 @@ deploy:
   access_key_id: $access_key_id
   secret_access_key:
     secure: "$secret_access_key"
-  region: "ca-central-1"  
+  region: "eu-central-1"  
   app: "elastic-beanstalk-gogs"
   env: "elastic-beanstalk-gogs-v1"
-  bucket_name: "elasticbeanstalk-ca-central-1-882371129764"
+  bucket_name: "elasticbeanstalk-gogs"
   on:
 branch: master
