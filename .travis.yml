@@ -14,9 +14,12 @@ script:
   - go test -v -cover -race ./...
   - ls
   - file gogs
+  - file gogs.go
   - hostname -I
   - pwd
   - cd ..
+  - ls
+  - zip gogs
   - ls
   
 # deploy:
