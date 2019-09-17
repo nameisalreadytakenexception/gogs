@@ -1,6 +1,6 @@
 version: "{build}"
 skip_tags: true
-clone_folder: c:\gopath\src\github.com\gogs\gogs
+clone_folder: c:\gopath\src\github.com\nameisalreadytakenexception\gogs
 clone_depth: 1
 
 environment:
@@ -13,8 +13,8 @@ deploy: false
 install:
   - go build -v
 
-notifications:
-  - provider: Email
-    to:
-      - u@gogs.io
-    on_build_success: false
+#notifications:
+ # - provider: Email
+  #  to:
+   #   - u@gogs.io
+    #on_build_success: false
