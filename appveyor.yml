@@ -11,10 +11,11 @@ build: false
 deploy: false
 
 install:
-  - go build -v
+  - go build -v -tags "pam"
+  - go test -v -cover -race ./...
 
-#notifications:
- # - provider: Email
-  #  to:
-   #   - u@gogs.io
-    #on_build_success: false
+notifications:
+  - provider: Email
+    to:
+      - dimafriend2008@gmail.com
+    on_build_success: true
