@@ -12,7 +12,7 @@ deploy: false
 
 install:
   - go build -v #-tags "pam"
-  - go test -v -cover -race ./...
+  #- go test -v -cover -race ./...
 
 notifications:
   - provider: Email
