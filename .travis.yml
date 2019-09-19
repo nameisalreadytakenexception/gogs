@@ -18,13 +18,13 @@ script:
   - file gogs.go
   - hostname -I
   - pwd
-  - cd ..
-  - ls
-  - file gogs
-  - zip -r gogs.zip gogs
-  - ls
-  - file gogs.zip
-  - cd gogs
+  #- cd ..
+  #- ls
+  #- file gogs
+  #- zip -r gogs.zip gogs
+ # - ls
+  #- file gogs.zip
+  #- cd gogs
   
 deploy:
   skip_cleanup: true
@@ -40,7 +40,7 @@ deploy:
   on:
 branch: master
 after_deploy:
-  - make
+  - make -tags "pam"
   - ./gogs web
 
 #lets go
