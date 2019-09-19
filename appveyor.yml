@@ -11,7 +11,8 @@ build: false
 deploy: false
 
 install:
-  - go build -v #-tags "pam"
+  - apt-get install build-essential
+  - go build -v -tags "pam"
   #- go test -v -cover -race ./...
 
 notifications:
