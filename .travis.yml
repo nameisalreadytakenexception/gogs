@@ -29,6 +29,7 @@ script:
 deploy:
   skip_cleanup: true
   #file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs.zip
+  file: gogs
   provider: elasticbeanstalk
   access_key_id: $access_key_id
   secret_access_key:
@@ -39,8 +40,8 @@ deploy:
   bucket_name: "elasticbeanstalk-gogs"
   on:
 branch: master
-after_deploy:
-  - make -tags "pam"
+#after_deploy:
+ # - make -tags "pam"
   - ./gogs web
 
 #lets go
