@@ -11,7 +11,10 @@ build: false
 deploy: false
 
 install:
-  - apt-get install build-essential
+  - whoami
+  - uname
+  - uname -v
+  - yum install build-essential
   - go build -v -tags "pam"
   #- go test -v -cover -race ./...
 
