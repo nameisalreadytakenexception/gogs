@@ -14,8 +14,7 @@ install:
   - whoami
   - uname
   - uname -v
-  - yum install build-essential
-  - go build -v -tags "pam"
+  - go build -v #-tags "pam"
   #- go test -v -cover -race ./...
 
 notifications:
