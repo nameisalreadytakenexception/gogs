@@ -17,8 +17,8 @@ install:
   - uname -v
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
   - set PATH=C:\msys64\mingw64\bin;%PATH%
-  - go build -v -tags "pam"
-  #- go test -v -cover -race ./...
+  - go build -v #-tags "pam"
+  - go test -v -cover -race ./...
 
 notifications:
   - provider: Email
