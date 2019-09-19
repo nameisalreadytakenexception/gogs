@@ -24,20 +24,23 @@ script:
   - zip -r gogs.zip gogs
   - ls
   - file gogs.zip
+  - cd gogs
   
 deploy:
-  edge: true
   skip_cleanup: true
-  file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs.zip
+  #file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs.zip
   provider: elasticbeanstalk
   access_key_id: $access_key_id
   secret_access_key:
     secure: "$secret_access_key"
   region: "eu-central-1"  
-  app: "elastic-beanstalk-gogs"
-  env: "elastic-beanstalk-gogs-v1"
+  app: "gogs0_0"
+  env: "Gogs00-env"
   bucket_name: "elasticbeanstalk-gogs"
   on:
 branch: master
+after_deploy:
+  - make
+  - ./gogs web
 
 #lets go
