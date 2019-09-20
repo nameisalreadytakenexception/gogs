@@ -40,8 +40,8 @@ deploy:
   secret_access_key:
     secure: "$secret_access_key"
   region: "eu-central-1"  
-  app: "gogs"
-  env: "Gogs-env"
+  app: "gogs1"
+  env: "Gogs1-env"
   bucket_name: "elasticbeanstalk-gogs"
   #local_dir: eb
   zip_file: eb.zip
