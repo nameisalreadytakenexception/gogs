@@ -18,9 +18,9 @@ script:
   - file gogs.go
   - hostname -I
   - pwd
-  - mkdir gogs_folder
-  - cp -r gogs public scripts templates LICENSE README_ZH.md README.md gogs_folder
-  - zip -r gogs.zip gogs_folder
+  - mkdir eb
+  - cp -r gogs public scripts templates LICENSE README_ZH.md README.md eb
+  - zip -r eb.zip eb
   #- cd ..
   #- ls
   #- file gogs
@@ -31,7 +31,7 @@ script:
   
 deploy:
   skip_cleanup: true
-  file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs/gogs.zip
+  file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs/eb.zip
   provider: elasticbeanstalk
   access_key_id: $access_key_id
   secret_access_key:
