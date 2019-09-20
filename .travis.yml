@@ -16,10 +16,10 @@ script:
   - ls
   - file gogs
   - pwd
-  - chmod +x start.sh
+  #- chmod +x start.sh
   #- mkdir eb
   #- cp -r gogs public scripts templates LICENSE README_ZH.md README.md eb
-  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md start.sh
+  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md Procfile
   #- cd eb && ls
   #- cd ..
   #- zip -r eb.zip eb && ls
