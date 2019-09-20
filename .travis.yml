@@ -18,7 +18,7 @@ script:
   - file gogs.go
   - hostname -I
   - pwd
-  - zip gogs
+  - zip -r gogs.zip gogs public scripts templates LICENSE README_ZH.md README.md
   #- cd ..
   #- ls
   #- file gogs
@@ -30,7 +30,6 @@ script:
 deploy:
   skip_cleanup: true
   file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs/gogs.zip
-  file: gogs
   provider: elasticbeanstalk
   access_key_id: $access_key_id
   secret_access_key:
