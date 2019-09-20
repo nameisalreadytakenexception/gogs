@@ -18,7 +18,9 @@ script:
   - file gogs.go
   - hostname -I
   - pwd
-  - zip -r gogs.zip gogs public scripts templates LICENSE README_ZH.md README.md
+  - mkdir gogs_folder
+  - cp -r gogs public scripts templates LICENSE README_ZH.md README.md gogs_folder
+  - zip -r gogs.zip gogs_folder
   #- cd ..
   #- ls
   #- file gogs
