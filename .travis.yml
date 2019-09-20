@@ -44,4 +44,4 @@ branch: master
  # - make -tags "pam"
   #- ./gogs web
 
-#lets go
+#lets go go
