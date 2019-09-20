@@ -18,7 +18,9 @@ script:
   - pwd
   - mkdir eb
   - cp -r gogs public scripts templates LICENSE README_ZH.md README.md eb
-  - zip -r eb.zip eb
+  - cd eb && ls
+  - cd ..
+  - zip -r eb.zip eb && ls
   #- cd ..
   #- ls
   #- file gogs
@@ -35,8 +37,8 @@ deploy:
   secret_access_key:
     secure: "$secret_access_key"
   region: "eu-central-1"  
-  app: "gogs0_0"
-  env: "Gogs00-env"
+  app: "gogs"
+  env: "Gogs-env"
   bucket_name: "elasticbeanstalk-gogs"
   on:
 branch: master
