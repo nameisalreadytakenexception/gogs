@@ -17,7 +17,7 @@ script:
   - file gogs
   - pwd
   - mkdir eb
-  - cp -r gogs public scripts templates LICENSE README_ZH.md README.md Makefile gogs.go eb
+  - cp -r gogs public scripts templates LICENSE README_ZH.md README.md gogs.go eb
   - zip -r eb.zip eb
   #- cd ..
   #- ls
