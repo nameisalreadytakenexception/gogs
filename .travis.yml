@@ -31,8 +31,8 @@ script:
   
 deploy:
   skip_cleanup: true
-  file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs/eb.zip
-  file: eb.zip
+  #file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs/eb.zip
+  #file: eb.zip
   provider: elasticbeanstalk
   access_key_id: $access_key_id
   secret_access_key:
@@ -41,7 +41,8 @@ deploy:
   app: "gogs"
   env: "Gogs-env"
   bucket_name: "elasticbeanstalk-gogs"
-  local_dir: eb
+  #local_dir: eb
+  zip_file: eb.zip
   on:
 branch: master
 #after_deploy:
