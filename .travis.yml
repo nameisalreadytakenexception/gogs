@@ -15,11 +15,9 @@ script:
   - go test -v -cover -race ./...
   - ls
   - file gogs
-  - file gogs.go
-  - hostname -I
   - pwd
   - mkdir eb
-  - cp -r gogs public scripts templates LICENSE README_ZH.md README.md eb
+  - cp -r gogs public scripts templates LICENSE README_ZH.md README.md Procfile eb
   - zip -r eb.zip eb
   #- cd ..
   #- ls
