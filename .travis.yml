@@ -41,6 +41,7 @@ deploy:
   app: "gogs"
   env: "Gogs-env"
   bucket_name: "elasticbeanstalk-gogs"
+  local_dir: eb
   on:
 branch: master
 #after_deploy:
