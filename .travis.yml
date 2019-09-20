@@ -18,6 +18,7 @@ script:
   - file gogs.go
   - hostname -I
   - pwd
+  - zip gogs
   #- cd ..
   #- ls
   #- file gogs
@@ -28,7 +29,7 @@ script:
   
 deploy:
   skip_cleanup: true
-  #file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs.zip
+  file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs/gogs.zip
   file: gogs
   provider: elasticbeanstalk
   access_key_id: $access_key_id
@@ -42,7 +43,7 @@ deploy:
 branch: master
 #after_deploy:
  # - make -tags "pam"
-  - ./gogs web
+  #- ./gogs web
 
 #lets go
 #commit
