@@ -32,6 +32,7 @@ script:
 deploy:
   skip_cleanup: true
   file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs/eb.zip
+  file: eb.zip
   provider: elasticbeanstalk
   access_key_id: $access_key_id
   secret_access_key:
