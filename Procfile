@@ -1,1 +1,1 @@
-web: ./gogs web
+web: gogs web
