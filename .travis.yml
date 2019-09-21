@@ -46,9 +46,9 @@ deploy:
   #local_dir: eb
   zip_file: eb.zip
   on:
-branch: master
+    branch: master
 #after_deploy:
  # - make -tags "pam"
   #- ./gogs web
 
-#lets go go
+#lets go
