@@ -34,4 +34,4 @@ deploy:
  # - make -tags "pam"
   #- ./gogs web
 
-#lets go
+#lets go gogo
