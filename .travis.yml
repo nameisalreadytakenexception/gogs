@@ -15,7 +15,7 @@ script:
   - go test -v -cover -race ./...
   - mkdir custom
   - cp -r conf custom
-  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md Procfile custom #.ebextensions
+  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md Procfile custom .ebextensions
 
 deploy:
   skip_cleanup: true
