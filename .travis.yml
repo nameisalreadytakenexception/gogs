@@ -13,28 +13,12 @@ before_install:
 script:
   - go build -v -tags "pam"
   - go test -v -cover -race ./...
-  - ls
-  - file gogs
-  - pwd
-  - chmod +x start.sh
   - mkdir custom
   - cp -r conf custom
-  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md Procfile custom #start.sh Buildfile
-  #- cd eb && ls
-  #- cd ..
-  #- zip -r eb.zip eb && ls
-  #- cd ..
-  #- ls
-  #- file gogs
-  #- zip -r gogs.zip gogs
- # - ls
-  #- file gogs.zip
-  #- cd gogs
-  
+  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md Procfile custom .ebextensions
+
 deploy:
   skip_cleanup: true
-  #file: /home/travis/gopath/src/github.com/nameisalreadytakenexception/gogs/eb.zip
-  #file: eb.zip
   provider: elasticbeanstalk
   access_key_id: $access_key_id
   secret_access_key:
@@ -43,7 +27,6 @@ deploy:
   app: "gogs"
   env: "Gogs-env"
   bucket_name: "elasticbeanstalk-gogs"
-  #local_dir: eb
   zip_file: eb.zip
   on:
     branch: master
