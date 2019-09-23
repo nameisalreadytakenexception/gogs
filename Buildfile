@@ -1,2 +1,2 @@
-#make: ./start.sh
-make: ./gogs web
+make: ./start.sh
+#make: ./gogs web  
