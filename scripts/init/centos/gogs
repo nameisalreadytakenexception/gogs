@@ -26,7 +26,8 @@
 # Default values
 
 NAME=gogs
-GOGS_HOME=/home/git/gogs
+#GOGS_HOME=/home/git/gogs
+GOGS_HOME=/var/app/current
 GOGS_PATH=${GOGS_HOME}/$NAME
 GOGS_USER=git
 SERVICENAME="Gogs"
