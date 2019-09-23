@@ -28,7 +28,7 @@ script:
   #- sed -i "s/DOMAIN = APP_ENV_IP/DOMAIN =  $ip_env/" app.ini
   - sed -i "s/HOST = 127.0.0.1:3306/HOST = $db_ip:3306/" app.ini
   - sed -i "s/PASSWD = passwd/PASSWD = $db_passwd/" app.ini
-  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md custom Buildfile start.sh #Procfile .ebextensions
+  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md custom Buildfile start.sh app.ini #Procfile .ebextensions
 
 deploy:
   skip_cleanup: true
