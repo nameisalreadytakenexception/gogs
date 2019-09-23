@@ -21,6 +21,7 @@ script:
   - chmod +x start.sh
   - export AWS_ACCESS_KEY_ID=$access_key_id
   - export AWS_SECRET_ACCESS_KEY="$secret_access_key"
+  - export TRAVIS_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
   - terraform init
   - terraform plan
   - terraform apply -auto-approve
@@ -37,8 +38,8 @@ deploy:
   secret_access_key:
     secure: "$secret_access_key"
   region: "eu-central-1"  
-  app: "gogstf"
-  env: "gogsenvtf"
+  app: "gogstf-$TRAVIS_BUILD_NUMBER"
+  env: "gogsenvtf-$TRAVIS_BUILD_NUMBER"
   bucket_name: "elasticbeanstalk-gogs"
   zip_file: eb.zip
   on:
