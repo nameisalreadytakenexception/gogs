@@ -16,7 +16,7 @@ script:
   - mkdir custom
   - cp -r conf custom
   - chmod +x start.sh
-  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md Procfile custom Buildfile start.sh#.ebextensions
+  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md Procfile custom Buildfile start.sh #.ebextensions
 
 deploy:
   skip_cleanup: true
