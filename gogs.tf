@@ -2,11 +2,11 @@ provider "aws" {
   region     = "eu-central-1"
 
 }
-resource "aws_elastic_beanstalk_application" "gogstf-$TRAVIS_BUILD_NUMBER" {
-  name = "gogstf-$TRAVIS_BUILD_NUMBER"
+resource "aws_elastic_beanstalk_application" "gogstf-" {
+  name = "gogstf-"
 }
-resource "aws_security_group" "gogssg-$TRAVIS_BUILD_NUMBER" {
-  name        = "gogssg-$TRAVIS_BUILD_NUMBER"
+resource "aws_security_group" "gogssg-" {
+  name        = "gogssg-"
   description = "Allow inbound traffic from provided Security Groups"
   vpc_id      = "vpc-0b6f211bbe6b29305"
   ingress {
@@ -41,8 +41,8 @@ resource "aws_security_group" "gogssg-$TRAVIS_BUILD_NUMBER" {
   }
 }
 resource "aws_elastic_beanstalk_environment" "gogs" {
-  name                = "gogsenvtf-$TRAVIS_BUILD_NUMBER"
-  application         = "${aws_elastic_beanstalk_application.gogstf-$TRAVIS_BUILD_NUMBER.name}"
+  name                = "gogsenvtf-"
+  application         = "${aws_elastic_beanstalk_application.gogstf-.name}"
   solution_stack_name = "64bit Amazon Linux 2018.03 v2.13.0 running Go 1.13"
   tags = {
     ita_group = "Lv-428"
@@ -60,7 +60,7 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "SecurityGroups"
-    value     = "${aws_security_group.gogssg-$TRAVIS_BUILD_NUMBER.id}"
+    value     = "${aws_security_group.gogssg-.id}"
   }
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
