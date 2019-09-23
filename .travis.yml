@@ -26,7 +26,7 @@ deploy:
     secure: "$secret_access_key"
   region: "eu-central-1"  
   app: "gogs"
-  env: "Gogs-env-1"
+  env: "Gogs-env-2"
   bucket_name: "elasticbeanstalk-gogs"
   zip_file: eb.zip
   on:
