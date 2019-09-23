@@ -8,14 +8,26 @@ go:
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y libpam-dev
-  - sudo apt-get install -y zip
+  - sudo apt-get install -y zip unzip
+  - wget https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip
+  - unzip terraform_0.12.7_linux_amd64.zip
+  - sudo mv terraform /usr/local/bin/
+  - terraform --version
 
 script:
   - go build -v -tags "pam"
   - go test -v -cover -race ./...
-  - mkdir custom
-  - cp -r conf custom
+  - mkdir custom && cp -r conf custom
   - chmod +x start.sh
+  - export AWS_ACCESS_KEY_ID=$access_key_id
+  - export AWS_SECRET_ACCESS_KEY="$secret_access_key"
+  - terraform init
+  - terraform plan
+  - terraform apply -auto-approve
+  
+  #- sed -i "s/DOMAIN = APP_ENV_IP/DOMAIN =  $ip_env/" app.ini
+  - sed -i "s/HOST = 127.0.0.1:3306/HOST = $db_ip:3306/" app.ini
+  - sed -i "s/PASSWD = passwd/PASSWD = $db_passwd/" app.ini
   - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md custom Buildfile start.sh #Procfile .ebextensions
 
 deploy:
@@ -31,8 +43,3 @@ deploy:
   zip_file: eb.zip
   on:
     branch: master
-#after_deploy:
- # - make -tags "pam"
-  #- ./gogs web
-
-#lets go go go
