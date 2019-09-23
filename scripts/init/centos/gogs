@@ -30,12 +30,13 @@ NAME=gogs
 GOGS_HOME=/var/app/current
 #GOGS_HOME=${APP_DEPLOY_DIR}
 GOGS_PATH=${GOGS_HOME}/$NAME
-#GOGS_USER=git
-GOGS_USER=ec2-user
+GOGS_USER=git
+#GOGS_USER=ec2-user
 #GOGS_USER=root
 SERVICENAME="Gogs"
 LOCKFILE=${GOGS_HOME}/lock/subsys/gogs
-LOGPATH=${GOGS_HOME}/log
+#LOGPATH=${GOGS_HOME}/log
+LOGPATH=/home/log
 LOGFILE=${LOGPATH}/gogs.log
 RETVAL=0
 
