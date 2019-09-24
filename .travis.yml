@@ -46,3 +46,8 @@ deploy:
   zip_file: eb.zip
   on:
     branch: master
+    
+  notifications:
+    slack:
+      rooms:
+        universebigteam:$slack_token#general
