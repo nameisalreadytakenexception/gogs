@@ -9,10 +9,16 @@ sudo sed -i "s/# %wheel/ %wheel/g" /etc/sudoers
 sudo chown -R git /var/app/
 sudo chown -R git /var/app/current/custom/conf/app.ini
 sudo chown -R git /home/gogs/
+
+sudo service nginx stop
+sudo sed -i "s/5000/3000/g" /etc/nginx/conf.d/elasticbeanstalk/00_application.conf
+sudo service nginx start
 sudo service gogs start
-sudo touch /home/gogs/starttt.sh
-sudo echo "#!/bin/sh" > /home/gogs/starttt.sh
-sudo echo "sudo service gogs start" >> /home/gogs/starttt.sh
-sudo echo "sudo chown -R git /var/app/current/custom/conf/app.ini" >> /home/gogs/starttt.sh
-sudo chmod +x /home/gogs/starttt.sh
-(crontab -l 2>/dev/null; echo "* * * * * /home/gogs/starttt.sh") | crontab -
+
+
+# sudo touch /home/gogs/starttt.sh
+# sudo echo "#!/bin/sh" > /home/gogs/starttt.sh
+# sudo echo "sudo service gogs start" >> /home/gogs/starttt.sh
+# sudo echo "sudo chown -R git /var/app/current/custom/conf/app.ini" >> /home/gogs/starttt.sh
+# sudo chmod +x /home/gogs/starttt.sh
+# (crontab -l 2>/dev/null; echo "* * * * * /home/gogs/starttt.sh") | crontab -
