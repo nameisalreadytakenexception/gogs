@@ -11,8 +11,8 @@ sudo chown -R git /var/app/current/custom/conf/app.ini
 sudo chown -R git /home/gogs/
 
 sudo service nginx stop
-sudo sed -i "s/5000/3000/g" /etc/nginx/conf.d/elasticbeanstalk/00_application.conf
-sudo service nginx start
+sudo sed -i "s+http://127.0.0.1:5000+http://127.0.0.1:3000+g" /etc/nginx/conf.d/elasticbeanstalk/00_application.conf
+sudo service nginx restart
 sudo service gogs start
 
 
