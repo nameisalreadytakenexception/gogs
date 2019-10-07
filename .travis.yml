@@ -19,9 +19,9 @@ script:
   - go test -v -cover -race ./...
   - sed -i 's/RUN_MODE = dev/RUN_MODE = prod/g' conf/app.ini
   - sed -i 's+ROOT =+ROOT = /home/gogs/gogs-repositories+g' conf/app.ini
-  - sed -i 's+127.0.0.1:3306+$gogs_db_host:3306+g' conf/app.ini
+  - sed -i 's+127.0.0.1:3306+'"$gogs_db_host"':3306+g' conf/app.ini
   - sed -i 's/USER = root/USER = gogs/g' conf/app.ini
-  - sed -i '171 s/PASSWD =/PASSWD = "$gogs_db_pass"/g' conf/app.ini  # 171str
+  - sed -i '171 s/PASSWD =/PASSWD = '"$gogs_db_pass"'/g' conf/app.ini  # 171str
   - sed -i 's/INSTALL_LOCK = false/INSTALL_LOCK = true/g' conf/app.ini
   - sed -i '324 s+ROOT_PATH =+ROOT_PATH = /home/gogs/log+g' conf/app.ini  #324str
 
@@ -50,4 +50,4 @@ deploy:
     branch: master
     
   notifications:
-    slack: universebigteam:$slack_token
+    slack: universebigteam:$slack
