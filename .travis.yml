@@ -49,5 +49,5 @@ deploy:
   on:
     branch: master
     
-  notifications:
-    slack: universebigteam:$slack
+notifications:
+  slack: universebigteam:$slack
