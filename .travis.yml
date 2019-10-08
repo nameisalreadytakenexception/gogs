@@ -50,4 +50,4 @@ deploy:
     branch: master
     
 notifications:
-  slack: universebigteam:$slack
+  slack: "universebigteam:$slack"
