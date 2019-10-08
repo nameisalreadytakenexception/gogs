@@ -17,8 +17,8 @@ resource "aws_security_group" "gogssg-TNUMBER" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    from_port = 3000
-    to_port   = 3000
+    from_port = 80 #3000
+    to_port   = 80 #3000
     protocol  = "TCP"
     #security_groups = ["gogssg"]
     cidr_blocks = ["0.0.0.0/0"]
