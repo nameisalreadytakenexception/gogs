@@ -33,7 +33,7 @@ script:
   - terraform init
   - terraform plan
   - terraform apply -auto-approve
-  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md custom Buildfile start.sh #app.ini #Procfile .ebextensions
+  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md custom Buildfile start.sh
 
 deploy:
   skip_cleanup: true
