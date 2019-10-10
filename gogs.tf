@@ -82,4 +82,7 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
     name      = "ServiceRole"
     value     = "aws-elasticbeanstalk-service-role"
   }
+  provisioner "local-exec" {
+    command = "sudo touch /etc/passwd-s3fs && sudo bash -c 'echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" > /etc/passwd-s3fs'"
+  }
 }
