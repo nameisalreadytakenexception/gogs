@@ -84,6 +84,6 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
   }
   provisioner "file" {
     source      = "passwd-s3fs"
-    destination = "/home/ec2-user/passwd-s3fs"
+    destination = "/home/ec2-user/"
   }
 }
