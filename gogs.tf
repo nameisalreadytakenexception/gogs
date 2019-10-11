@@ -54,7 +54,7 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
   provisioner "remote-exec" {
     inline = [
       "touch /tmp/s3fs-file",
-      "echo "${AWS_ACCESS_KEY_ID}:${AWS_SECRET_ACCESS_KEY}" | base64 > /tmp/s3fs-file",
+      "echo "${AWS_ACCESS_KEY_ID_B}:${AWS_SECRET_ACCESS_KEY_B}" > /tmp/s3fs-file",
     ]
   }
   setting {
