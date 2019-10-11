@@ -84,11 +84,6 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
   }
   provisioner "file" {
     source      = "passwd-s3fs"
-    destination = "/etc/passwd-s3fs"
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "sudo chmod 640 /etc/passwd-s3fs",
-    ]
+    destination = "/home/ec2-user/passwd-s3fs"
   }
 }
