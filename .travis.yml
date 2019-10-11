@@ -33,7 +33,7 @@ script:
 #   - sed -i 's/AWS_ACCESS_KEY_ID/'"$access_key_id"'/g' gogs.tf
 #   - sed -i 's/AWS_SECRET_ACCESS_KEY/'"$secret_access_key"'/g' gogs.tf
   - touch passwd-s3fs
-  - echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" > passwd-s3fs
+  #- echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" > passwd-s3fs
   - terraform init
   - terraform plan
   - terraform apply -auto-approve
