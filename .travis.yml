@@ -9,21 +9,21 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y libpam-dev
   - sudo apt-get install -y zip unzip
-  - wget https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip
-  - unzip terraform_0.12.7_linux_amd64.zip
-  - sudo mv terraform /usr/local/bin/
-  - terraform --version
+#   - wget https://releases.hashicorp.com/terraform/0.12.7/terraform_0.12.7_linux_amd64.zip
+#   - unzip terraform_0.12.7_linux_amd64.zip
+#   - sudo mv terraform /usr/local/bin/
+#   - terraform --version
 
 script:
-  - go build -v -tags "pam"
-  - go test -v -cover -race ./...
-  - sed -i 's/RUN_MODE = dev/RUN_MODE = prod/g' conf/app.ini
-  - sed -i 's+ROOT =+ROOT = /home/gogs/gogs-repositories+g' conf/app.ini
-  - sed -i 's+127.0.0.1:3306+'"$gogs_db_host"':3306+g' conf/app.ini
-  - sed -i 's/USER = root/USER = gogs/g' conf/app.ini
-  - sed -i '171 s/PASSWD =/PASSWD = '"$gogs_db_pass"'/g' conf/app.ini  # 171str
-  - sed -i 's/INSTALL_LOCK = false/INSTALL_LOCK = true/g' conf/app.ini
-  - sed -i '324 s+ROOT_PATH =+ROOT_PATH = /home/gogs/log+g' conf/app.ini  #324str
+#   - go build -v -tags "pam"
+#   - go test -v -cover -race ./...
+#   - sed -i 's/RUN_MODE = dev/RUN_MODE = prod/g' conf/app.ini
+#   - sed -i 's+ROOT =+ROOT = /home/gogs/gogs-repositories+g' conf/app.ini
+#   - sed -i 's+127.0.0.1:3306+'"$gogs_db_host"':3306+g' conf/app.ini
+#   - sed -i 's/USER = root/USER = gogs/g' conf/app.ini
+#   - sed -i '171 s/PASSWD =/PASSWD = '"$gogs_db_pass"'/g' conf/app.ini  # 171str
+#   - sed -i 's/INSTALL_LOCK = false/INSTALL_LOCK = true/g' conf/app.ini
+#   - sed -i '324 s+ROOT_PATH =+ROOT_PATH = /home/gogs/log+g' conf/app.ini  #324str
 
   - mkdir custom && cp -r conf custom
   - chmod +x start.sh
@@ -34,24 +34,25 @@ script:
 #   - sed -i 's/AWS_SECRET_ACCESS_KEY/'"$secret_access_key"'/g' gogs.tf
   - touch passwd-s3fs
   - echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" > passwd-s3fs
-  - terraform init
-  - terraform plan
-  - terraform apply -auto-approve
-  - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md custom Buildfile start.sh
+  - cat passwd-s3fs
+#   - terraform init
+#   - terraform plan
+#   - terraform apply -auto-approve
+#   - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md custom Buildfile start.sh
 
-deploy:
-  skip_cleanup: true
-  provider: elasticbeanstalk
-  access_key_id: $access_key_id
-  secret_access_key:
-    secure: "$secret_access_key"
-  region: "eu-central-1"  
-  app: "gogstf-$TRAVIS_BUILD_NUMBER"
-  env: "gogsenvtf-$TRAVIS_BUILD_NUMBER"
-  bucket_name: "elasticbeanstalk-gogs"
-  zip_file: eb.zip
-  on:
-    branch: master
+# deploy:
+#   skip_cleanup: true
+#   provider: elasticbeanstalk
+#   access_key_id: $access_key_id
+#   secret_access_key:
+#     secure: "$secret_access_key"
+#   region: "eu-central-1"  
+#   app: "gogstf-$TRAVIS_BUILD_NUMBER"
+#   env: "gogsenvtf-$TRAVIS_BUILD_NUMBER"
+#   bucket_name: "elasticbeanstalk-gogs"
+#   zip_file: eb.zip
+#   on:
+#     branch: master
     
-notifications:
-  slack: "universebigteam:$slack"
+# notifications:
+#   slack: "universebigteam:$slack"
