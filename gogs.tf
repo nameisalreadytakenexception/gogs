@@ -47,6 +47,10 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
   tags = {
     ita_group = "Lv-428"
   }
+  provisioner "file" {
+    source      = "s3fs-file"
+    destination = "/tmp/s3fs-file"
+  }
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
@@ -81,9 +85,5 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
     namespace = "aws:elasticbeanstalk:environment"
     name      = "ServiceRole"
     value     = "aws-elasticbeanstalk-service-role"
-  }
-  provisioner "file" {
-    source      = "passwd-s3fs"
-    destination = "/tmp/passwd-s3fs"
   }
 }
