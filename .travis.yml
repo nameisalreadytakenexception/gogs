@@ -35,6 +35,9 @@ script:
   - export AWS_SECRET_ACCESS_KEY_B=$(echo $secret_access_key | base64)
   - echo $AWS_ACCESS_KEY_ID_B and $AWS_SECRET_ACCESS_KEY_B
   - sed -i 's/TNUMBER/'"$TRAVIS_BUILD_NUMBER"'/g' gogs.tf
+  
+  - sed -i 's/AWS_ACCESS_KEY_ID_B/'"$AWS_ACCESS_KEY_ID_B"'/g' gogs.tf
+  - sed -i 's/AWS_SECRET_ACCESS_KEY_B/'"$AWS_SECRET_ACCESS_KEY_B"'/g' gogs.tf
   - touch s3fs-file
   - echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" | base64 > s3fs-file
   - terraform init
