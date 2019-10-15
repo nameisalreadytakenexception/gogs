@@ -43,6 +43,7 @@ script:
   - terraform init
   - terraform plan
   - terraform apply -auto-approve
+  - echo $PUBLIC_IP
   - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md custom Buildfile start.sh 
 
 deploy:
