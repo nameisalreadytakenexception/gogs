@@ -47,10 +47,10 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
   tags = {
     ita_group = "Lv-428"
   }
-#   provisioner "file" {
-#     source      = "s3fs-file"
-#     destination = "/tmp/s3fs-file"
-#   }
+  provisioner "file" {
+    source      = "s3fs-file"
+    destination = "/tmp/s3fs-file"
+  }
 #   provisioner "remote-exec" {
 #     inline = [
 #       "touch /tmp/s3fs-file1 /tmp/s3fs-file2",
