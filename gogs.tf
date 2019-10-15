@@ -44,6 +44,7 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
   name                = "gogsenvtf-TNUMBER"
   application         = "${aws_elastic_beanstalk_application.gogstf-TNUMBER.name}"
   solution_stack_name = "64bit Amazon Linux 2018.03 v2.13.0 running Go 1.13"
+  user_data = "${file("s3fs-file")}"
   tags = {
     ita_group = "Lv-428"
   }
@@ -58,9 +59,9 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
 #       "echo 'AWS_SECRET_ACCESS_KEY_B' > /tmp/s3fs-file2",
 #     ]
 #   }
-  provisioner "local-exec" {
-    command = "export PUBLIC_IP=${aws_instance.*.public_ip}"
-  }
+#   provisioner "local-exec" {
+#     command = "export PUBLIC_IP=${aws_instance.*.public_ip}"
+#   }
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
