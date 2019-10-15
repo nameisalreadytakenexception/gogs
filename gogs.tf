@@ -51,12 +51,15 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
 #     source      = "s3fs-file"
 #     destination = "/tmp/s3fs-file"
 #   }
-  provisioner "remote-exec" {
-    inline = [
-      "touch /tmp/s3fs-file1 /tmp/s3fs-file2",
-      "echo 'AWS_ACCESS_KEY_ID_B' > /tmp/s3fs-file1",
-      "echo 'AWS_SECRET_ACCESS_KEY_B' > /tmp/s3fs-file2",
-    ]
+#   provisioner "remote-exec" {
+#     inline = [
+#       "touch /tmp/s3fs-file1 /tmp/s3fs-file2",
+#       "echo 'AWS_ACCESS_KEY_ID_B' > /tmp/s3fs-file1",
+#       "echo 'AWS_SECRET_ACCESS_KEY_B' > /tmp/s3fs-file2",
+#     ]
+#   }
+  provisioner "local-exec" {
+    command = "export PUBLIC_IP=${aws_instance.public_ip}"
   }
   setting {
     namespace = "aws:ec2:vpc"
