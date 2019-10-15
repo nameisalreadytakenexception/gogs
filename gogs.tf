@@ -59,7 +59,7 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
 #     ]
 #   }
   provisioner "local-exec" {
-    command = "export PUBLIC_IP=${aws_instance.public_ip}"
+    command = "export PUBLIC_IP=${aws_instance.*.public_ip}"
   }
   setting {
     namespace = "aws:ec2:vpc"
