@@ -44,7 +44,6 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
   name                = "gogsenvtf-TNUMBER"
   application         = "${aws_elastic_beanstalk_application.gogstf-TNUMBER.name}"
   solution_stack_name = "64bit Amazon Linux 2018.03 v2.13.0 running Go 1.13"
-  user_data = "${file("s3fs-file")}"
   tags = {
     ita_group = "Lv-428"
   }
@@ -62,6 +61,12 @@ resource "aws_elastic_beanstalk_environment" "gogs" {
 #   provisioner "local-exec" {
 #     command = "export PUBLIC_IP=${aws_instance.*.public_ip}"
 #   }
+  connection {
+    type     = "ssh"
+    user     = "ec2-user"
+    password = ""
+    host     = ""
+  }
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
