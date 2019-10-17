@@ -8,7 +8,7 @@ make
 sudo make install
 cd ..
 sudo touch /etc/passwd-s3fs
-sudo bash -c "echo 's3fs' | base64 -d > /etc/passwd-s3fs"
+sudo bash -c "echo 's3fspass' | base64 -d > /etc/passwd-s3fs"
 sudo chmod 640 /etc/passwd-s3fs
 sudo chmod +x scripts/init/centos/gogs
 sudo mkdir -p /home/gogs/log
