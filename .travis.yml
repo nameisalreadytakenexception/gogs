@@ -33,7 +33,7 @@ script:
  - sed -i 's/INSTALL_LOCK = false/INSTALL_LOCK = true/g' conf/app.ini
  - sed -i '324 s+ROOT_PATH =+ROOT_PATH = /home/gogs/log+g' conf/app.ini  #324str
  - export s3fs=$(cat s3fs)
- - sed -i 's/s3fs/"$s3fs"/g' start.sh
+ - sed -i 's/s3fspass/"$s3fs"/g' start.sh
  - mkdir custom && cp -r conf custom
  - chmod +x start.sh
  - export AWS_ACCESS_KEY_ID=$access_key_id
@@ -58,5 +58,5 @@ deploy:
   on:
     branch: master
     
-notifications:
-  slack: universebigteam:$slack
+# notifications:
+#   slack: universebigteam:$slack
