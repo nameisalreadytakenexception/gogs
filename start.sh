@@ -7,7 +7,8 @@ cd s3fs-fuse/
 make
 sudo make install
 cd ..
-sudo mv /home/ec2-user/passwd-s3fs /etc/
+sudo touch /etc/passwd-s3fs
+sudo bash -c "echo 's3fs' | base64 -d > /etc/passwd-s3fs"
 sudo chmod 640 /etc/passwd-s3fs
 sudo chmod +x scripts/init/centos/gogs
 sudo mkdir -p /home/gogs/log
