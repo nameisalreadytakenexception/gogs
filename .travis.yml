@@ -20,7 +20,6 @@ before_install:
   - export PATH=~/git-crypt:$PATH
   - echo $GIT_CRYPT_KEY | base64 -d | base64 -d > ~/git-crypt/crypt-key
   - cd $TRAVIS_BUILD_DIR
-  - pwd
   - git-crypt unlock ~/git-crypt/crypt-key
 
 script:
@@ -33,24 +32,17 @@ script:
  - sed -i '171 s/PASSWD =/PASSWD = '"$gogs_db_pass"'/g' conf/app.ini  # 171str
  - sed -i 's/INSTALL_LOCK = false/INSTALL_LOCK = true/g' conf/app.ini
  - sed -i '324 s+ROOT_PATH =+ROOT_PATH = /home/gogs/log+g' conf/app.ini  #324str
- - cat s3fs
-# - mkdir custom && cp -r conf custom
-#   - chmod +x start.sh
-#   - export AWS_ACCESS_KEY_ID=$access_key_id
-#   - export AWS_SECRET_ACCESS_KEY="$secret_access_key"
-#   - export AWS_ACCESS_KEY_ID_B=$(echo $access_key_id | base64)
-#   - export AWS_SECRET_ACCESS_KEY_B=$(echo $secret_access_key | base64)
-#   - echo $AWS_ACCESS_KEY_ID_B and $AWS_SECRET_ACCESS_KEY_B
-#   - sed -i 's/TNUMBER/'"$TRAVIS_BUILD_NUMBER"'/g' gogs.tf
-  
-#   - sed -i 's/AWS_ACCESS_KEY_ID_B/'"$AWS_ACCESS_KEY_ID_B"'/g' gogs.tf
-#   - sed -i 's/AWS_SECRET_ACCESS_KEY_B/'"$AWS_SECRET_ACCESS_KEY_B"'/g' gogs.tf
-#   - touch s3fs-file
-#   - echo "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" | base64 > s3fs-file
-#   - terraform init
-#   - terraform plan
-#   - terraform apply -auto-approve
-#   - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md custom Buildfile start.sh 
+ - export s3fs=$(cat s3fs)
+ - sed -i 's/s3fs/"$s3fs"/g' start.sh
+ - mkdir custom && cp -r conf custom
+ - chmod +x start.sh
+ - export AWS_ACCESS_KEY_ID=$access_key_id
+ - export AWS_SECRET_ACCESS_KEY="$secret_access_key"
+ - sed -i 's/TNUMBER/'"$TRAVIS_BUILD_NUMBER"'/g' gogs.tf
+ - terraform init
+ - terraform plan
+ - terraform apply -auto-approve
+ - zip -r eb.zip gogs public scripts templates LICENSE README_ZH.md README.md custom Buildfile start.sh 
 
 deploy:
   skip_cleanup: true
