@@ -1,3 +1,4 @@
+s3fs filter=git-crypt diff=git-crypt
 conf/gitignore/* linguist-vendored
 conf/license/* linguist-vendored
 public/assets/* linguist-vendored
