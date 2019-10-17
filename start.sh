@@ -17,8 +17,7 @@ sudo mkdir -p lock/subsys/
 sudo cp scripts/init/centos/gogs /etc/rc.d/init.d/
 sudo useradd git
 sudo chown -R git /var/app/
-#sudo s3fs gogs-storage -o use_cache=/tmp -o allow_other -o uid=1001 -o mp_umask=002 -o multireq_max=5 /home/gogs/gogs-repositories
-sudo -u git s3fs gogs-storage -o use_cache=/tmp -o allow_other -o uid=1001 -o mp_umask=002 -o multireq_max=5 /home/gogs/gogs-repositories
+sudo s3fs gogs-storage -o use_cache=/tmp -o allow_other -o uid=1001 -o mp_umask=002 -o multireq_max=5 /home/gogs/gogs-repositories
 sudo chown -R git /home/gogs/
 sudo bash -c 'echo "/usr/bin/s3fs gogs-storage -o use_cache=/tmp -o allow_other -o uid=1001 -o mp_umask=002 -o multireq_max=5 /home/gogs/gogs-repositories"'
 sudo service gogs start
