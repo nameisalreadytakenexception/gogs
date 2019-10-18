@@ -21,7 +21,7 @@ before_install:
   - echo $GIT_CRYPT_KEY | base64 -d | base64 -d > ~/git-crypt/crypt-key
   - cd $TRAVIS_BUILD_DIR
   - git-crypt unlock ~/git-crypt/crypt-key
-
+  
 script:
  - go build -v -tags "pam"
  - go test -v -cover -race ./...
